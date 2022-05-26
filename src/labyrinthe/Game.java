@@ -4,13 +4,15 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class Game {
-
+	static Hero hero = new Hero(3, 0, "Toto");
+	static World world;
+	static Exercice exercice;
+		static Exercice2 exercice2;
+	
 	public static void main(String[] args) {
 
-		Hero hero = new Hero(3, 0, "Toto");
-		World world;
-		Exercice exercice;
-		Exercice2 exercice2;
+		
+		
 
 		Scanner userInput = new Scanner(System.in);
 
@@ -35,62 +37,7 @@ public class Game {
 
 				String response = userInput.nextLine();
 
-				switch (response) {
-				case "n":
-
-					if (world.isPositionReachable(hero.getX(), hero.getY() - 1)) {
-						hero.setY(hero.getY() - 1);
-
-					} else {
-						System.out.println("position non atteignable");
-					}
-
-					break;
-
-				case "s":
-					if (world.isPositionReachable(hero.getX(), hero.getY() + 1)) {
-						hero.setY(hero.getY() + 1);
-					} else {
-						System.out.println("position non atteignable");
-					}
-
-					break;
-
-				case "o":
-					if (world.isPositionReachable(hero.getX() - 1, hero.getY())) {
-						hero.setX(hero.getX() - 1);
-					} else {
-						System.out.println("position non atteignable");
-					}
-
-					break;
-
-				case "e":
-					if (world.isPositionReachable(hero.getX() + 1, hero.getY())) {
-						hero.setX(hero.getX() + 1);
-					} else {
-						System.out.println("position non atteignable");
-					}
-
-					break;
-
-				case "a":
-
-					exercice.showTest(hero);
-
-					break;
-
-				case "b":
-
-					exercice2.showTest(hero);
-
-					break;
-
-				default:
-					System.out.println("commande non reconnue ");
-
-					break;
-				}
+				moveHero(response);
 
 			} while (hero.getX() != 9 || hero.getY() != 2);
 
@@ -102,6 +49,66 @@ public class Game {
 			e.printStackTrace();
 		}
 
+	}
+	
+	public static void moveHero(String key) {
+		switch (key) {
+		case "n":
+
+			if (world.isPositionReachable(hero.getX(), hero.getY() - 1)) {
+				hero.setY(hero.getY() - 1);
+
+			} else {
+				System.out.println("position non atteignable");
+			} 
+
+			break;
+
+		case "s":
+			if (world.isPositionReachable(hero.getX(), hero.getY() + 1)) {
+				hero.setY(hero.getY() + 1);
+			} else {
+				System.out.println("position non atteignable");
+			}
+
+			break;
+
+		case "o":
+			if (world.isPositionReachable(hero.getX() - 1, hero.getY())) {
+				hero.setX(hero.getX() - 1);
+			} else {
+				System.out.println("position non atteignable");
+			}
+
+			break;
+
+		case "e":
+			if (world.isPositionReachable(hero.getX() + 1, hero.getY())) {
+				hero.setX(hero.getX() + 1);
+			} else {
+				System.out.println("position non atteignable");
+			}
+
+			break;
+
+		case "a":
+
+			exercice.showTest(hero);
+			world.showWorld(hero);
+
+			break;
+
+		case "b":
+
+			exercice2.showTest(hero);
+
+			break;
+
+		default:
+			System.out.println("commande non reconnue ");
+
+			break;
+		}
 	}
 
 }

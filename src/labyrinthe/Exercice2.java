@@ -30,7 +30,10 @@ public class Exercice2 {
 	}
 
 	public void showTest(Hero hero) {
-
+		
+		 hero.setX(9);
+		 hero.setY(6);
+		
 		for (int i = 0; i < test.size(); i++) {
 
 			if (test.get(i).matches("N") && world.isPositionReachable(hero.getX(), hero.getY() - 1)) {
