@@ -7,12 +7,9 @@ public class Game {
 	static Hero hero = new Hero(3, 0, "Toto");
 	static World world;
 	static Exercice exercice;
-		static Exercice2 exercice2;
-	
-	public static void main(String[] args) {
+	static Exercice2 exercice2;
 
-		
-		
+	public static void main(String[] args) {
 
 		Scanner userInput = new Scanner(System.in);
 
@@ -50,7 +47,7 @@ public class Game {
 		}
 
 	}
-	
+
 	public static void moveHero(String key) {
 		switch (key) {
 		case "n":
@@ -60,7 +57,7 @@ public class Game {
 
 			} else {
 				System.out.println("position non atteignable");
-			} 
+			}
 
 			break;
 

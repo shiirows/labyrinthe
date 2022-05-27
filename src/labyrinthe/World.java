@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+
 public class World {
 
 	ArrayList<String> labyrinth = new ArrayList<String>();
@@ -30,8 +31,10 @@ public class World {
 
 	public void showWorld(Hero hero) {
 
+		// Me permet d'afficher le héros grâce au "subSequence"
 		for (int i = 0; i < labyrinth.size(); i++) {
 			if (hero.getY() == i) {
+
 				System.out.print(labyrinth.get(i).subSequence(0, hero.getX()));
 				System.out.print(heroBlaze);
 				System.out.println(labyrinth.get(i).subSequence(hero.getX() + 1, labyrinth.get(i).length()));
@@ -49,9 +52,8 @@ public class World {
 			System.out.println("votre hero ne peux pas s'enfuire ");
 			return false;
 		}
-		
-		
-        // on différencie les zones accessible
+
+		// on différencie les zones accessible
 		return labyrinth.get(y).charAt(x) == ' ';
 
 	}
